@@ -6,6 +6,7 @@
             <h1 class="mb-5">Meet Our Guide</h1>
         </div>
         <div class="row g-4 justify-content-center">
+            <% team_details.forEach(detail => { %>
             <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item">
                     <div class="overflow-hidden">
@@ -22,95 +23,12 @@
                             <i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="text-center p-4">
-                        <h5 class="mb-0">Nguyen Thanh Luan</h5>
+                        <h6 class="mb-0"><%= detail.name %></h5>
                         <small>Designation</small>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="/static/img/team-1.jpg" alt>
-                    </div>
-                    <div
-                        class="position-relative d-flex justify-content-center"
-                        style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Phan Minh Quoc</h5>
-                        <small>Designation</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="/static/img/team-1.jpg" alt>
-                    </div>
-                    <div
-                        class="position-relative d-flex justify-content-center"
-                        style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Tang Nguyen Tuan Khoa</h5>
-                        <small>Designation</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="/static/img/team-1.jpg" alt>
-                    </div>
-                    <div
-                        class="position-relative d-flex justify-content-center"
-                        style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Doan Van Du</h5>
-                        <small>Designation</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="/static/img/team-1.jpg" alt>
-                    </div>
-                    <div
-                        class="position-relative d-flex justify-content-center"
-                        style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href>
-                            <i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Tran Hong Quan</h5>
-                        <small>Designation</small>
-                    </div>
-                </div>
-            </div>
+            <% }); %>
         </div>
     </div>
 </div>
