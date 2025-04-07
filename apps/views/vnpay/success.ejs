@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Transaction Status</title>
+    </head>
+    <body>
+        <%- include('layout'); %>
+        <% if (code === "00") { %>
+        <p style="text-align: center;">GD thành công</p>
+        <% } else { %>
+        <p style="text-align: center; color: red;">GD thất bại</p>
+        <% } %>
+        <p style="text-align: center;">
+            <a class="btn btn-default" href="/order">Về danh sách</a>
+        </p>
+    </body>
+</html>

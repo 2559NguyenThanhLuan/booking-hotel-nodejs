@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <%- include('layout'); %>
+        <h3><%= title %></h3>
+        <div class="table-responsive">
+            <form action="refund" method="POST">
+                <div class="form-group">
+                    <label for="orderId">Mã giao dịch (vnp_TxnRef):</label>
+                    <input class="form-control" id="orderId" name="orderId">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Số tiền hoàn:</label>
+                    <input class="form-control" id="amount" name="amount">
+                </div>
+                <div class="form-group">
+                    <label for="transType">Kiểu hoàn tiền
+                        (vnp_TransactionType):</label>
+                    <select class="form-control" id="transType"
+                        name="transType">
+                        <option value="02">Hoàn toàn phần</option>
+                        <option value="03">Hoàn một phần</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transDate">Thời gian tạo giao dịch
+                        (vnp_TransactionDate):</label>
+                    <input class="form-control" id="transDate" name="transDate"
+                        placeholder="yyyyMMddHHmmss">
+                </div>
+                <div class="form-group">
+                    <label for="user">User thực hiện hoàn
+                        (vnp_CreateBy):</label>
+                    <input class="form-control" id="user" name="user">
+                </div>
+                <button class="btn btn-default" type="submit">Refund</button>
+            </form>
+        </div>
+    </body>
+</html>

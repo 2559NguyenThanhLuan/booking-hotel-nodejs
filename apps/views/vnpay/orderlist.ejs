@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <%- include('../shares/links.ejs'); %>
+        <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .page-header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .booking-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            border: none;
+            background-color: #ffffff;
+        }
+        
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background-color: #4e73df;
+            color: white;
+            font-weight: 600;
+            padding: 15px;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+            width: 100px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: #212529;
+            flex-grow: 1;
+        }
+        
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-paid {
+            background-color: #1cc88a;
+            color: white;
+        }
+        
+        .status-pending {
+            background-color: #f6c23e;
+            color: white;
+        }
+        
+        .status-cancelled {
+            background-color: #e74a3b;
+            color: white;
+        }
+        
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 12px 20px;
+            font-size: 13px;
+            color: #6c757d;
+        }
+        
+        .dates-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0 15px;
+        }
+        
+        .date-item {
+            text-align: center;
+        }
+        
+        .date-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 3px;
+        }
+        
+        .date-value {
+            font-weight: 600;
+            color: #343a40;
+        }
+        
+        .page-title {
+            margin-bottom: 0;
+            font-weight: 700;
+            color: #343a40;
+        }
+        
+        .note-section {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title"><%= title %></h1>
+                <button
+                    onclick="location.href='/'"
+                    class="btn btn-primary">Trang chủ</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <% bookings.forEach(function(booking) {
+                let statusClass = 'status-pending';
+                if(booking.status === 'Paid' || booking.status === 'paid') {
+                statusClass = 'status-paid';
+                } else if(booking.status === 'Cancelled' || booking.status ===
+                'cancelled') {
+                statusClass = 'status-cancelled';
+                }
+                %>
+                <div class="col-lg-4 col-md-6">
+                    <div class="booking-card">
+                        <div class="card-header">
+                            Mã phòng #<%= booking.order_id %>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-info-row">
+                                <div class="info-label">Số tiền:</div>
+                                <div class="info-value"><strong><%=
+                                        booking.amount %></strong></div>
+                            </div>
+
+                            <div class="card-info-row">
+                                <div class="info-label">Trạng thái:</div>
+                                <div class="info-value">
+                                    <span
+                                        class="status-badge <%= statusClass %>"><%=
+                                        booking.status %></span>
+                                </div>
+                            </div>
+
+                            <div class="dates-container">
+                                <div class="date-item">
+                                    <div class="date-label">NHẬN PHÒNG</div>
+                                    <div class="date-value"><%= booking.check_in
+                                        %></div>
+                                </div>
+                                <div class="date-item">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="date-item">
+                                    <div class="date-label">TRẢ PHÒNG</div>
+                                    <div class="date-value"><%=
+                                        booking.check_out %></div>
+                                </div>
+                            </div>
+
+                            <div class="card-info-row">
+                                <div class="info-label">Ngân hàng:</div>
+                                <div class="info-value"><%= booking.bank_code
+                                    %></div>
+                            </div>
+
+                            <div class="card-info-row">
+                                <div class="info-label">Ngày thanh toán:</div>
+                                <div class="info-value"><%= booking.pay_date
+                                    %></div>
+                            </div>
+
+                            <% if(booking.note && booking.note.trim() !== '') {
+                            %>
+                            <div class="note-section">
+                                <div
+                                    style="font-weight: 600; margin-bottom: 5px;">Ghi
+                                    chú:</div>
+                                <%= booking.note %>
+                            </div>
+                            <% } %>
+                        </div>
+                        <div class="card-footer">
+                            Tạo lúc: <%= booking.created_at %>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <%- include('layout'); %>
+        <h3><%= title %></h3>
+        <div class="table-responsive">
+            <form action="querydr" method="POST">
+                <div class="form-group">
+                    <label for="orderId">Mã giao dịch (vnp_TxnRef)</label>
+                    <input class="form-control" id="orderId" name="orderId"
+                        placeholder="txnRef">
+                </div>
+                <div class="form-group">
+                    <label for="transDate">Thời gian tạo giao dịch
+                        (vnp_TransactionDate)</label>
+                    <input class="form-control" id="transDate" name="transDate"
+                        placeholder="yyyyMMddHHmmss">
+                </div>
+                <button class="btn btn-default" type="submit">QueryDr</button>
+            </form>
+        </div>
+    </body>
+</html>

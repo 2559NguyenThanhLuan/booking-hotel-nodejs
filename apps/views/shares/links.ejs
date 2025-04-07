@@ -18,8 +18,10 @@
 
 <!-- Libraries Stylesheet -->
 <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
-<link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+<link href="/static/lib/owlcarousel/assets/owl.carousel.min.css"
+    rel="stylesheet">
+<link href="/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+    rel="stylesheet" />
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -37,11 +39,58 @@
 <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
 <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
-<script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script
+    src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Template Javascript -->
 <script src="/static/js/main.js"></script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkinInput = document.getElementById("checkin");
+        const checkoutInput = document.getElementById("checkout");
+        const pricePerNight = parseFloat(document.getElementById("room").value);
+        const amountInput = document.getElementById("amount"); 
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        function calculateTotalAmount() {
+            const checkinDate = new Date(checkinInput.value);
+            const checkoutDate = new Date(checkoutInput.value);
+            checkinDate.setHours(0, 0, 0, 0);
+            checkoutDate.setHours(0, 0, 0, 0);
+            if (checkinDate < today) {
+                alert("Ngày nhận phòng không được trước ngày hiện tại.");
+                checkinInput.value = ""; 
+                amountInput.value = null;
+                return;
+            } else if(checkinDate > checkoutDate){
+                alert("Ngày trả phòng không được trước ngày nhận phòng.");
+                checkoutInput.value = ""; 
+                amountInput.value = null;
+                return;
+            }else if(checkinDate.getTime() === checkoutDate.getTime()) {
+                alert("Ngày nhận phòng và ngày trả phòng không được giống nhau.");
+                checkoutInput.value = ""; 
+                amountInput.value = null;
+                return;
+            } else if (checkinDate && checkoutDate && checkoutDate > checkinDate) {
+                const timeDifference = checkoutDate - checkinDate;
+                const days = timeDifference / (1000 * 60 * 60 * 24); // Chuyển đổi từ milliseconds sang ngày
+                const totalAmount = days * pricePerNight;
+
+                // Hiển thị tổng tiền vào trường input
+                amountInput.value = totalAmount.toLocaleString();
+            } else {
+                amountInput.value = null;
+            }
+        }
+
+        checkinInput.addEventListener("change", calculateTotalAmount);
+        checkoutInput.addEventListener("change", calculateTotalAmount);
+    });
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     var currentPath = window.location.pathname;
@@ -54,5 +103,7 @@
         }
     });
 });
+
+
 
 </script>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Room Booking</title>
+        <%- include('shares/links'); %>
+    </head>
+    <body>
+        <!-- Loading Spinner -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary"
+                style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Navbar -->
+        <%- include('shares/navbar'); %>
+
+        <!-- Hero Header -->
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+            <div class="container py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1
+                            class="display-3 text-white mb-3 animated slideInDown">Enjoy
+                            Your Vacation With Us</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Room Booking Section -->
+        <div class="container py-5">
+            <h1 class="mb-5 text-center fw-bold text-primary">Room Booking</h1>
+
+            <div class="row g-4  justify-content-center">
+                <div class="col-lg-5 mt-4 mt-lg-0">
+                    <div class="row g-4 justify-content-center">
+                        <% rooms.forEach(room => { %>
+                        <div class="col-md-6 wow fadeInUp w-100"
+                            data-wow-delay="0.1s">
+                            <div
+                                class="card shadow-sm rounded-4 bg-light h-100">
+                                <img
+                                    src="https://imgs.search.brave.com/P07t-fr0OVhsrW7-5zjCpoKKzpKy9_amXjghBBTv4ik/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAwLzgzLzA2LzIw/LzM2MF9GXzgzMDYy/MDY0X2dONXNZVnVa/czdqSENBQ3ZuS0sy/d21zd2NlSTMyWUhZ/LmpwZw"
+                                    class="card-img-top"
+                                    alt="<%= room.name %>">
+                                <div class="card-body d-flex flex-column">
+                                    <h5
+                                        class="card-title text-dark d-flex align-items-center">
+                                        <i
+                                            class="bi bi-door-open-fill me-2 text-success fs-0"></i>
+                                        <%= room.name %>
+                                    </h5>
+                                    <p class="text-muted mb-2">
+                                        <i
+                                            class="bi bi-currency-exchange me-1"></i>
+                                        <strong><%= room.price * 1000
+                                            %></strong> VND/Đêm
+                                    </p>
+                                    <p class="card-text flex-grow-1"><%=
+                                        room.description %></p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 mt-4 mt-lg-0"><% rooms.forEach(room => { %>
+                    <input type="hidden" class="form-control"
+                        id="room" name="room" value="<%= room.price %>"
+                        required />
+                    <% }) %>
+                    <div class="card p-4 shadow-sm rounded-4 bg-light h-100">
+                        <h3 class="mb-4 text-primary">Thông tin đặt phòng</h3>
+                        <form action="/order/create_payment_url" method="GET">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Họ và
+                                    tên</label>
+                                <input type="text" class="form-control"
+                                    id="name" name="name"
+                                    placeholder="Họ và tên" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Số điện
+                                    thoại</label>
+                                <input type="text" class="form-control"
+                                    id="phone" name="phone"
+                                    placeholder="Số điện thoại" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email"
+                                    class="form-label">Email</label>
+                                <input type="email" class="form-control"
+                                    id="email" name="email" placeholder="Email"
+                                    required />
+                            </div>
+                            <div class="md-3 mb-3 row">
+                                <div class="col-md-6">
+                                    <label for="checkin" class="form-label">Ngày
+                                        nhận phòng</label>
+                                    <input type="date" class="form-control"
+                                        id="checkin" name="checkin" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="checkout"
+                                        class="form-label">Ngày
+                                        trả phòng</label>
+                                    <input type="date" class="form-control"
+                                        id="checkout" name="checkout"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">Tổng
+                                    tiền</label>
+                                <input type="text" class="form-control"
+                                    id="amount" name="amount"
+                                    placeholder="Tổng tiền" required readonly />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Thanh
+                                toán</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <%- include('shares/footer'); %>
+    </body>
+</html>
