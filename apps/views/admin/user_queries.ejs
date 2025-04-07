@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Queries</title>
+    <%- include('../shares/admin/links'); %>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <%- include('../shares/admin/header'); %>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h3 class="mb-4">USER QUERIES</h3>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Settings</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <section class="col-lg connectedSortable">
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+        
+                                <div class="text-end mb-4">
+                                    <a class="btn btn-primary rounded-pill shadow-none btn-sm"><i class="bi bi-check-all"></i> Mark all read</a>
+                                    <a class="btn btn-danger rounded-pill shadow-none btn-sm"><i class="bi bi-trash"></i> Delete all</a>
+    
+                                </div>
+        
+                                <div class="table-responsive-md" style="height: 450px; overflow-y: scroll;">
+                                    <table class="table table-hover border caption-top">
+                                        <thead class="sticky-top">
+                                            <tr class="bg-primary text-white">
+                                                <th scope="col">#</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col" width ="20%">Subject</th>
+                                                <th scope="col" width ="30%">Message</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% user_queries.forEach(userQueries => { %>
+                                            <tr>
+                                                <td><%= userQueries.sr_no %></td>
+                                                <td><%= userQueries.name %></td>
+                                                <td><%= userQueries.email %></td>
+                                                <td><%= userQueries.message %></td>
+                                                <td><%= userQueries.subject %></td>
+                                                <td><%= new Date(userQueries.date).toLocaleDateString('vi-VN') %></td>
+                                                <td>
+                                                    <div>
+                                                        <button class="btn btn-primary rounded-pill shadow-none btn-sm">seen</button>
+                                                        <button class="btn btn-danger rounded-pill shadow-none btn-sm">delete</button>
+                                                    </div>                                                    
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+    </div>
+</body>
+</html>
