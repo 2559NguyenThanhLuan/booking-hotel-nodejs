@@ -6,7 +6,7 @@ router.use("/about", require(__dirname + "/about_controller"));
 router.use("/services", require(__dirname + "/services_controller"));
 router.use("/rooms", require(__dirname + "/rooms_controller"));
 router.use("/contact", require(__dirname + "/contact_controller"));
-router.use("/login", require(__dirname + "/login_controller"));
+router.use("/auth", require(__dirname + "/../route/auth_route"));
 router.use("/404", require(__dirname + "/404_controller"));
 
 router.use("/admin", require(__dirname + "/admin/index"));
@@ -39,6 +39,10 @@ router.get("/", async function(req, res) {
         console.error("Error fetching: ", err.message);
         res.status(500).send("Database error");
     }
+});
+
+router.get("/profile", function(req, res) {
+    res.render("profile.ejs");
 });
 
 module.exports = router;
