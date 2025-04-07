@@ -72,19 +72,39 @@
 
             <div class="white-panel">
                 <div class="login-show">
-                    <h2>LOGIN</h2>
-                    <input type="text" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <input type="button" value="Login">
-                    <a href>Forgot password?</a>
+                    <form action="/auth/login" method="POST">
+                        <h2>LOGIN</h2>
+                        <input type="text" id="email" name="email" placeholder="Email">
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <a href>Forgot password?</a>
+                        <a href="/auth/google" class="btn btn-outline-danger rounded-pill px-4">
+                            <i class="fab fa-google me-2"></i> Đăng nhập với Google
+                        </a>                        
+                        <button type="submit" class="btn btn-primary float-end">Login</button>
+                    </form>
                 </div>
+                
                 <div class="register-show">
-                    <h2>REGISTER</h2>
-                    <input type="text" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <input type="password" placeholder="Confirm Password">
-                    <input type="button" value="Register">
-                </div>
+                    <h2 class="text text-center">REGISTER</h2>
+                    <form action="/auth/register" method="POST">
+                        <div class="form-group">
+                            <div class="row">
+                                <input type="text" class="col form-control mt-2 mb-2" name="name" id="name" placeholder="Name" required>
+                                <input type="text" class="col form-control mt-2 mb-2" name="phonenum" id="phonenum" placeholder="Phone Number" required>
+                            </div>
+                            <div class="row">
+                                <input type="email" class="form-control mt-2 mb-2" id="email" name="email" placeholder="Email" required>
+                                <input type="text" class="form-control mt-2 mb-2" id="address" name="address" placeholder="Address" required>
+                                <input type="date" class="form-control mt-2 mb-2" id="dob" name="dob" placeholder="Date of Birth" required>
+                            </div>
+                            <div class="row">
+                                <input type="password" class="col form-control mt-2 mb-2" id="password" name="password" placeholder="Password" required>
+                                <input type="password" class="col form-control mt-2 mb-2" id="cpassword" name="cpassword" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary float-end">Register</button>
+                    </form>
+                </div>    
             </div>
         </div>
 
