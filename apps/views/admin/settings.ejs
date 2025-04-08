@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <%- include('../shares/admin/links'); %>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <%- include('../shares/admin/header'); %>
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h3 class="mb-4">SETTINGS</h3>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Settings</li>
+                            </ol>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <section class="col-lg connectedSortable">
+                            <!-- General settings section -->
+                            <div class="card border-0 shadow mb-4">
+                                <div class="card-body">
+                                    <div class="container-fluid">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <h5 class="card-title m-0 text-bold">General Settings</h5>
+                                            <button type="button" class="btn btn-primary shadow-none btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#general-s">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </button>
+                                        </div>
+                                        <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
+                                        <% settings.forEach(function(settings_title) { %>
+                                        <p class="card-text" id="site_title">
+                                            <%= settings_title.site_title %>
+                                        </p>
+                                        <% }); %>
+                                        <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
+                                        <% settings.forEach(function(settings_about) { %>
+                                        <p class="card-text" id="site_about">
+                                            <%= settings_about.site_about %>
+                                        </p>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true"
+                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form action="/admin/getAllSettings" method="POST">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">General Settings</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <% settings.forEach(function(setting) { %>
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold">Site Title</label>
+                                                        <input type="text" name="site_title"
+                                                            value="<%= setting.site_title %>"
+                                                            class="form-control shadow-none" required />
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold">About us</label>
+                                                        <textarea name="site_about" id="site_about_inp" class="form-control shadow-none" rows="6"><%= setting.site_about %></textarea>
+                                                    </div>
+                                                    <% }); %>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button"
+                                                        class="btn btn-secondary rounded-3 shadow-none"
+                                                        data-bs-dismiss="modal">
+                                                        Cancel
+                                                    </button>
+
+                                                    <button type="submit" class="btn btn-primary rounded-3">
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact details section -->
+                            <div class="card border-0 shadow mb-4">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <h5 class="card-title m-0 text-bold">Contacts Settings</h5>
+                                        <button type="button" class="btn btn-primary shadow-none btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#contacts-s">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                    </div>
+                                    <div class="row">
+                                        <% contact_details.forEach(function(contact) { %>
+                                        <div class="col-lg-6">
+                                            <div class="mb-4">
+                                                <h6 class="card-subtitle mb-1 fw-bold">Address</h6>
+                                                
+                                                <p class="card-text" id="address">
+                                                    <%= contact.address %>
+                                                </p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h6 class="card-subtitle mb-1 fw-bold">Google Map</h6>
+                                                <p class="card-text" id="gmap">
+                                                    <%= contact.gmap %>
+                                                </p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h6 class="card-subtitle mb-1 fw-bold">
+                                                    Phone Numbers
+                                                </h6>
+                                                <p class="card-text mb-1">
+                                                    <i class="fa fa-phone-alt"></i>
+                                                    <span id="phone">
+                                                        <%= contact.phone %>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h6 class="card-subtitle mb-1 fw-bold">Email</h6>
+                                                <p class="card-text" id="email">
+                                                    <%= contact.email %>
+                                                </p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h6 class="card-subtitle mb-1 fw-bold">iFrame</h6>
+                                                <iframe class="border p-2 w-100" id="iframe" loading="lazy" src="<%= contact.iframe %>"></iframe>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact details modal -->
+                            <div class="modal fade" id="contacts-s" data-bs-backdrop="static" data-bs-keyboard="true"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="/admin/updateContacts" method="POST">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Contacts Settings</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid p-0">
+                                                    <div class="row">
+                                                        <% contact_details.forEach(contact => { %>
+                                                            <div class="mb-3">
+                                                                <label class="form-label fw-bold">Address</label>
+                                                                <input type="text" name="address"
+                                                                    class="form-control shadow-none" value="<%= contact.address %>"/>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label fw-bold">Google Map
+                                                                    Link</label>
+                                                                <input type="text" name="gmap"
+                                                                    class="form-control shadow-none" value="<%= contact.gmap %>"/>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label fw-bold">Phone Numbers (with
+                                                                    country code)</label>
+                                                                <div class="input-group mb-3">
+                                                                    <span class="input-group-text"><i
+                                                                            class="fa fa-phone-alt"></i></span>
+                                                                    <input type="text" name="phone"
+                                                                        class="form-control shadow-none"value="<%= contact.phone %>"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label fw-bold">Email</label>
+                                                                <input type="email" name="email"
+                                                                    class="form-control shadow-none"value="<%= contact.email %>"/>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label fw-bold">iFrame Src</label>
+                                                                <input type="text" name="iframe"
+                                                                    class="form-control shadow-none"value="<%= contact.iframe %>"/>
+                                                            </div>
+                                                        <% }); %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" onclick="contacts_inp(contacts_data)"
+                                                    class="btn btn-secondary rounded-3 shadow-none"
+                                                    data-bs-dismiss="modal">
+                                                    Cancel
+                                                </button>
+                                                
+                                                <button type="submit" class="btn btn-primary rounded-3">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Manament Team section -->
+                            <div class="card border-0 shadow mb-4">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <h5 class="card-title m-0 text-bold">Management Team</h5>
+                                        <button type="button" class="btn btn-primary shadow-none btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#team-s">
+                                            <i class="bi bi-plus-square"></i> Add
+                                        </button>
+                                    </div>
+                                    <div class="row" id="team-data">
+                                        <% team_details.forEach(function(member) { %>
+                                            <div class="col-md-2">
+                                                <div class="card bg-dark text-white" style="height: 300px;">
+                                                    <img src="https://picsum.photos/200" class="card-img object-fit-cover h-100" alt="<%= member.name %>" />
+                                                    <div class="card-img-overlay text-end">
+                                                        <form action="/admin/deleteTeam/<%= member.sr_no %>" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa mục này?');">
+                                                            <input type="hidden" name="id" value="<%= member.sr_no %>">
+                                                            <button type="submit" class="btn btn-danger btn-sm shadow-none">
+                                                                <i class="bi bi-trash"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <p class="card-text text-center text-white px-3 py-2">
+                                                        <%= member.name %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Management Team Modal -->
+                            <div class="modal fade" id="team-s" data-bs-backdrop="static" data-bs-keyboard="true"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="/admin/managementTeam" method="POST">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Add Team Member</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Name</label>
+                                                    <input type="text" id="member_name_inp" name="member_name"
+                                                        class="form-control shadow-none" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Picture</label>
+                                                    <input type="file" id="member_picture_inp" name="member_picture"
+                                                        accept="image/*"
+                                                        class="form-control shadow-none" required />
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button"
+                                                    onclick="member_name.value='', member_picture.value=''"
+                                                    class="btn btn-secondary rounded-3 shadow-none"
+                                                    data-bs-dismiss="modal">
+                                                    Cancel
+                                                </button>
+
+                                                <button type="submit" class="btn btn-primary rounded-3">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+        </div>
+</body>
+
+</html>

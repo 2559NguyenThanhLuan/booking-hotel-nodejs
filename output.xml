@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-04-07T22:23:52.892767" rpa="false" schemaversion="5">
+<suite id="s1" name="Settings" source="E:\VSCODE\HTML-CSS-JS\booking-hotel-nodejs\tests\settings.robot">
+<test id="s1-t1" name="Access Admin Settings Page" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:23:53.224578" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/admin/settings'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-07T22:23:53.224376" elapsed="3.753763"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>General Settings</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-07T22:23:56.978734" elapsed="0.012078"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:23:57.052475" level="INFO">Element 'xpath://button[contains(.,'Edit')]' is displayed.</msg>
+<arg>xpath://button[contains(.,'Edit')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-07T22:23:56.991134" elapsed="0.061440"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-07T22:23:57.052856" elapsed="2.107693"/>
+</kw>
+<status status="PASS" start="2025-04-07T22:23:53.223560" elapsed="5.937800"/>
+</test>
+<test id="s1-t2" name="Verify Admin Settings Page Loads Successfully" line="16">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:23:59.164459" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/admin/settings'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-07T22:23:59.164300" elapsed="3.213072"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-07T22:24:02.377814" elapsed="0.036559"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath://h5[contains(text(),'General Settings')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-07T22:24:02.414728" elapsed="0.011177"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:02.439698" level="INFO">Current page contains element 'xpath://p[@id="site_title"]'.</msg>
+<arg>xpath://p[@id="site_title"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-04-07T22:24:02.426438" elapsed="0.013356"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:02.448645" level="INFO">Current page contains element 'xpath://p[@id="site_about"]'.</msg>
+<arg>xpath://p[@id="site_about"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-04-07T22:24:02.440171" elapsed="0.008580"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-07T22:24:02.449120" elapsed="2.109593"/>
+</kw>
+<status status="PASS" start="2025-04-07T22:23:59.163288" elapsed="5.395803"/>
+</test>
+<test id="s1-t3" name="Update Site Title And About Successfully" line="24">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:04.560281" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/admin/settings'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-07T22:24:04.560081" elapsed="2.570854"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.131455" elapsed="0.029566"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:07.161583" level="INFO">Clicking button 'xpath://button[@data-bs-target='#general-s']'.</msg>
+<arg>xpath://button[@data-bs-target='#general-s']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.161398" elapsed="0.081078"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id:general-s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.242808" elapsed="0.233163"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:07.476486" level="INFO">Typing text 'LETMECOOK' into text field 'xpath://input[@name="site_title"]'.</msg>
+<arg>xpath://input[@name="site_title"]</arg>
+<arg>LETMECOOK</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.476313" elapsed="0.089567"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:07.566738" level="INFO">Typing text 'Test about page' into text field 'xpath://textarea[@name="site_about"]'.</msg>
+<arg>xpath://textarea[@name="site_about"]</arg>
+<arg>Test about page</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.566442" elapsed="0.090722"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:07.657826" level="INFO">Clicking button 'xpath=//button[contains(., 'Submit')]'.</msg>
+<arg>xpath=//button[contains(., 'Submit')]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.657594" elapsed="0.093290"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>LETMECOOK</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-07T22:24:07.751223" elapsed="0.987255"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:08.748779" level="INFO">Current page contains text 'Test about page'.</msg>
+<arg>Test about page</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-04-07T22:24:08.739035" elapsed="0.009836"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-07T22:24:08.749255" elapsed="2.114730"/>
+</kw>
+<status status="PASS" start="2025-04-07T22:24:04.559683" elapsed="6.304674"/>
+</test>
+<test id="s1-t4" name="Update Contact Information Successfully" line="43">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:10.865604" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/admin/settings'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-07T22:24:10.865417" elapsed="3.883674"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-07T22:24:14.749751" elapsed="0.028933"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:14.779358" level="INFO">Clicking button 'xpath://button[@data-bs-target='#contacts-s']'.</msg>
+<arg>xpath://button[@data-bs-target='#contacts-s']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:14.779081" elapsed="0.080614"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath://input[@name='address']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-07T22:24:14.860144" elapsed="0.229945"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.090866" level="INFO">Typing text '123 Robot Street' into text field 'xpath://input[@name='address']'.</msg>
+<arg>xpath://input[@name='address']</arg>
+<arg>123 Robot Street</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:15.090465" elapsed="0.091803"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.182887" level="INFO">Typing text 'https://maps.example.com' into text field 'xpath://input[@name='gmap']'.</msg>
+<arg>xpath://input[@name='gmap']</arg>
+<arg>https://maps.example.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:15.182649" elapsed="0.092022"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.275430" level="INFO">Typing text '+84999999999' into text field 'xpath://input[@name='phone']'.</msg>
+<arg>xpath://input[@name='phone']</arg>
+<arg>+84999999999</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:15.275142" elapsed="0.078615"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.354419" level="INFO">Typing text 'robot@test.com' into text field 'xpath://input[@name='email']'.</msg>
+<arg>xpath://input[@name='email']</arg>
+<arg>robot@test.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:15.354150" elapsed="0.072149"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.427095" level="INFO">Typing text 'https://iframe.example.com' into text field 'xpath://input[@name='iframe']'.</msg>
+<arg>xpath://input[@name='iframe']</arg>
+<arg>https://iframe.example.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-07T22:24:15.426822" elapsed="0.085063"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.512649" level="INFO">Clicking button 'xpath=//button[contains(., 'Submit')]'.</msg>
+<msg time="2025-04-07T22:24:15.650765" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-48.png"&gt;&lt;img src="selenium-screenshot-48.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-07T22:24:15.650982" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=134.0.6998.179)
+Stacktrace:
+	GetHandleVerifier [0x00007FF692634C25+3179557]
+	(No symbol) [0x00007FF6922988A0]
+	(No symbol) [0x00007FF692128FFC]
+	(No symbol) [0x00007FF692180EA4]
+	(No symbol) [0x00007FF692172A24]
+	(No symbol) [0x00007FF6921A7C2A]
+	(No symbol) [0x00007FF6921722D6]
+	(No symbol) [0x00007FF6921A7E40]
+	(No symbol) [0x00007FF6921D02F3]
+	(No symbol) [0x00007FF6921A7A03]
+	(No symbol) [0x00007FF6921706D0]
+	(No symbol) [0x00007FF692171983]
+	GetHandleVerifier [0x00007FF6926967CD+3579853]
+	GetHandleVerifier [0x00007FF6926AD1D2+3672530]
+	GetHandleVerifier [0x00007FF6926A2153+3627347]
+	GetHandleVerifier [0x00007FF69240092A+868650]
+	(No symbol) [0x00007FF6922A2FFF]
+	(No symbol) [0x00007FF69229F4A4]
+	(No symbol) [0x00007FF69229F646]
+	(No symbol) [0x00007FF69228EAA9]
+	BaseThreadInitThunk [0x00007FFFCE84E8D7+23]
+	RtlUserThreadStart [0x00007FFFCF8F14FC+44]
+</msg>
+<arg>xpath=//button[contains(., 'Submit')]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2025-04-07T22:24:15.512411" elapsed="0.206209">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=134.0.6998.179)
+Stacktrace:
+	GetHandleVerifier [0x00007FF692634C25+3179557]
+	(No symbol) [0x00007FF6922988A0]
+	(No symbol) [0x00007FF692128FFC]
+	(No symbol) [0x00007FF692180EA4]
+	(No symbol) [0x00007FF692172A24]
+	(No symbol) [0x00007FF6921A7C2A]
+	(No symbol) [0x00007FF6921722D6]
+	(No symbol) [0x00007FF6921A7E40]
+	(No symbol) [0x00007FF6921D02F3]
+	(No symbol) [0x00007FF6921A7A03]
+	(No symbol) [0x00007FF6921706D0]
+	(No symbol) [0x00007FF692171983]
+	GetHandleVerifier [0x00007FF6926967CD+3579853]
+	GetHandleVerifier [0x00007FF6926AD1D2+3672530]
+	GetHandleVerifier [0x00007FF6926A2153+3627347]
+	GetHandleVerifier [0x00007FF69240092A+868650]
+	(No symbol) [0x00007FF6922A2FFF]
+	(No symbol) [0x00007FF69229F4A4]
+	(No symbol) [0x00007FF69229F646]
+	(No symbol) [0x00007FF69228EAA9]
+	BaseThreadInitThunk [0x00007FFFCE84E8D7+23]
+	RtlUserThreadStart [0x00007FFFCF8F14FC+44]
+</status>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Contacts Settings</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.719216" elapsed="0.000064"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>123 Robot Street</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.719583" elapsed="0.000030"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>https://maps.example.com</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.719771" elapsed="0.000020"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>+84999999999</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.719914" elapsed="0.000037"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>robot@test.com</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.720065" elapsed="0.000016"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>https://iframe.example.com</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.720189" elapsed="0.000016"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:15.720329" elapsed="0.000016"/>
+</kw>
+<status status="FAIL" start="2025-04-07T22:24:10.865012" elapsed="4.855725">ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=134.0.6998.179)
+Stacktrace:
+	GetHandleVerifier [0x00007FF692634C25+3179557]
+	(No symbol) [0x00007FF6922988A0]
+	(No symbol) [0x00007FF692128FFC]
+	(No symbol) [0x00007FF692180EA4]
+	(No symbol) [0x00007FF692172A24]
+	(No symbol) [0x00007FF6921A7C2A]
+	(No symbol) [0x00007FF6921722D6]
+	(No symbol) [0x00007FF6921A7E40]
+	(No symbol) [0x00007FF6921D02F3]
+	(No symbol) [0x00007FF6921A7A03]
+	(No symbol) [0x00007FF6921706D0]
+	(No symbol) [0x00007FF692171983]
+	GetHandleVerifier [0x00007FF6926967CD+3579853]
+	GetHandleVerifier [0x00007FF6926AD1D2+3672530]
+	GetHandleVerifier [0x00007FF6926A2153+3627347]
+	GetHandleVerifier [0x00007FF69240092A+868650]
+	(No symbol) [0x00007FF6922A2FFF]
+	(No symbol) [0x00007FF69229F4A4]
+	(No symbol) [0x00007FF69229F646]
+	(No symbol) [0x00007FF69228EAA9]
+	BaseThreadInitThunk [0x00007FFFCE84E8D7+23]
+	RtlUserThreadStart [0x00007FFFCF8F14FC+44]
+</status>
+</test>
+<test id="s1-t5" name="Add Management Team Member Successfully" line="65">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:15.723044" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/admin/settings'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-07T22:24:15.722753" elapsed="2.888522"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-07T22:24:18.611771" elapsed="0.034328"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:18.646800" level="INFO">Clicking button 'xpath://button[@data-bs-target='#team-s']'.</msg>
+<msg time="2025-04-07T22:24:19.852483" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-51.png"&gt;&lt;img src="selenium-screenshot-51.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-07T22:24:19.852699" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (1836, 978)
+  (Session info: chrome=134.0.6998.179)
+Stacktrace:
+	GetHandleVerifier [0x00007FF692634C25+3179557]
+	(No symbol) [0x00007FF6922988A0]
+	(No symbol) [0x00007FF6921291CA]
+	(No symbol) [0x00007FF692187929]
+	(No symbol) [0x00007FF6921852E2]
+	(No symbol) [0x00007FF692182381]
+	(No symbol) [0x00007FF692181281]
+	(No symbol) [0x00007FF692172A24]
+	(No symbol) [0x00007FF6921A7C2A]
+	(No symbol) [0x00007FF6921722D6]
+	(No symbol) [0x00007FF6921A7E40]
+	(No symbol) [0x00007FF6921D02F3]
+	(No symbol) [0x00007FF6921A7A03]
+	(No symbol) [0x00007FF6921706D0]
+	(No symbol) [0x00007FF692171983]
+	GetHandleVerifier [0x00007FF6926967CD+3579853]
+	GetHandleVerifier [0x00007FF6926AD1D2+3672530]
+	GetHandleVerifier [0x00007FF6926A2153+3627347]
+	GetHandleVerifier [0x00007FF69240092A+868650]
+	(No symbol) [0x00007FF6922A2FFF]
+	(No symbol) [0x00007FF69229F4A4]
+	(No symbol) [0x00007FF69229F646]
+	(No symbol) [0x00007FF69228EAA9]
+	BaseThreadInitThunk [0x00007FFFCE84E8D7+23]
+	RtlUserThreadStart [0x00007FFFCF8F14FC+44]
+</msg>
+<arg>xpath://button[@data-bs-target='#team-s']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2025-04-07T22:24:18.646486" elapsed="1.207874">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (1836, 978)
+  (Session info: chrome=134.0.6998.179)
+Stacktrace:
+	GetHandleVerifier [0x00007FF692634C25+3179557]
+	(No symbol) [0x00007FF6922988A0]
+	(No symbol) [0x00007FF6921291CA]
+	(No symbol) [0x00007FF692187929]
+	(No symbol) [0x00007FF6921852E2]
+	(No symbol) [0x00007FF692182381]
+	(No symbol) [0x00007FF692181281]
+	(No symbol) [0x00007FF692172A24]
+	(No symbol) [0x00007FF6921A7C2A]
+	(No symbol) [0x00007FF6921722D6]
+	(No symbol) [0x00007FF6921A7E40]
+	(No symbol) [0x00007FF6921D02F3]
+	(No symbol) [0x00007FF6921A7A03]
+	(No symbol) [0x00007FF6921706D0]
+	(No symbol) [0x00007FF692171983]
+	GetHandleVerifier [0x00007FF6926967CD+3579853]
+	GetHandleVerifier [0x00007FF6926AD1D2+3672530]
+	GetHandleVerifier [0x00007FF6926A2153+3627347]
+	GetHandleVerifier [0x00007FF69240092A+868650]
+	(No symbol) [0x00007FF6922A2FFF]
+	(No symbol) [0x00007FF69229F4A4]
+	(No symbol) [0x00007FF69229F646]
+	(No symbol) [0x00007FF69228EAA9]
+	BaseThreadInitThunk [0x00007FFFCE84E8D7+23]
+	RtlUserThreadStart [0x00007FFFCF8F14FC+44]
+</status>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=team-s</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.854782" elapsed="0.000046"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>xpath://input[@name='name']</arg>
+<arg>Nguyen Van A</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.855121" elapsed="0.000040"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>id=member_picture_inp</arg>
+<arg>${TEAM_MEMBER_IMAGE}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.855500" elapsed="0.000048"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath=//div[@id='team-s']//button[normalize-space()='Submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.855736" elapsed="0.000023"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Management Team</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.855920" elapsed="0.000024"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>${TEAM_MEMBER_NAME}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.856248" elapsed="0.000026"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:19.856593" elapsed="0.000029"/>
+</kw>
+<status status="FAIL" start="2025-04-07T22:24:15.721984" elapsed="4.134868">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (1836, 978)
+  (Session info: chrome=134.0.6998.179)
+Stacktrace:
+	GetHandleVerifier [0x00007FF692634C25+3179557]
+	(No symbol) [0x00007FF6922988A0]
+	(No symbol) [0x00007FF6921291CA]
+	(No symbol) [0x00007FF692187929]
+	(No symbol) [0x00007FF6921852E2]
+	(No symbol) [0x00007FF692182381]
+	(No symbol) [0x00007FF692181281]
+	(No symbol) [0x00007FF692172A24]
+	(No symbol) [0x00007FF6921A7C2A]
+	(No symbol) [0x00007FF6921722D6]
+	(No symbol) [0x00007FF6921A7E40]
+	(No symbol) [0x00007FF6921D02F3]
+	(No symbol) [0x00007FF6921A7A03]
+	(No symbol) [0x00007FF6921706D0]
+	(No symbol) [0x00007FF692171983]
+	GetHandleVerifier [0x00007FF6926967CD+3579853]
+	GetHandleVerifier [0x00007FF6926AD1D2+3672530]
+	GetHandleVerifier [0x00007FF6926A2153+3627347]
+	GetHandleVerifier [0x00007FF69240092A+868650]
+	(No symbol) [0x00007FF6922A2FFF]
+	(No symbol) [0x00007FF69229F4A4]
+	(No symbol) [0x00007FF69229F646]
+	(No symbol) [0x00007FF69228EAA9]
+	BaseThreadInitThunk [0x00007FFFCE84E8D7+23]
+	RtlUserThreadStart [0x00007FFFCF8F14FC+44]
+</status>
+</test>
+<test id="s1-t6" name="Delete Management Team Member Successfully" line="83">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:19.858369" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/admin/settings'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-07T22:24:19.858175" elapsed="2.939362"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-07T22:24:22.798037" elapsed="0.030640"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2025-04-07T22:24:22.830277" level="FAIL">Variable '${MEMBER_NAME}' not found.</msg>
+<arg>${MEMBER_NAME}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2025-04-07T22:24:22.829204" elapsed="0.001152">Variable '${MEMBER_NAME}' not found.</status>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath=//p[contains(text(), '${MEMBER_NAME}')]/ancestor::div[contains(@class, 'card')]/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:22.830809" elapsed="0.000054"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<arg>ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:22.831272" elapsed="0.000042"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Management Team</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:22.831550" elapsed="0.000038"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<arg>${MEMBER_NAME}</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:22.831803" elapsed="0.000031"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-04-07T22:24:22.832005" elapsed="0.000022"/>
+</kw>
+<status status="FAIL" start="2025-04-07T22:24:19.857868" elapsed="2.974441">Variable '${MEMBER_NAME}' not found.</status>
+</test>
+<status status="FAIL" start="2025-04-07T22:23:52.894327" elapsed="29.939048"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Settings" id="s1" pass="3" fail="3" skip="0">Settings</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

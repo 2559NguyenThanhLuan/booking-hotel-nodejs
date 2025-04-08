@@ -9,7 +9,7 @@ router.use("/contact", require(__dirname + "/contact_controller"));
 router.use("/auth", require(__dirname + "/../route/auth_route"));
 router.use("/404", require(__dirname + "/404_controller"));
 
-router.use("/admin", require(__dirname + "/admin/index"));
+router.use("/admin", require(__dirname + "/admin/index.js"));
 
 function queryToPromise(query) {
     return new Promise((resolve, reject) => {
