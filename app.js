@@ -9,13 +9,12 @@ const roomsRouter = require("./apps/controllers/admin/rooms_controller");
 const connection = require(__dirname + "/apps/database/db_config");
 
 var app = express();
-app.use(controller);
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.set("views", __dirname + "/apps/views");
 app.set("view engine", "ejs");
 app.use("/static", express.static(__dirname + "/public"));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(session({
@@ -29,6 +28,8 @@ app.use((req, res, next) => {
     res.locals.user = req.session.user || null;
     next();
 });
+
+app.use(controller);
 
 app.use('/admin', settingsRouter);
 app.use('/admin', features_facilities)
