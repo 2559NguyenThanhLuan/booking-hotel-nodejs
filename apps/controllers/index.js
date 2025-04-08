@@ -8,13 +8,8 @@ router.use("/rooms", require(__dirname + "/rooms_controller"));
 router.use("/contact", require(__dirname + "/contact_controller"));
 router.use("/auth", require(__dirname + "/../route/auth_route"));
 router.use("/404", require(__dirname + "/404_controller"));
-<<<<<<< HEAD
 router.use("/booking", require(__dirname + "/booking_controller"));
 router.use("/admin", require(__dirname + "/admin/index"));
-=======
-
-router.use("/admin", require(__dirname + "/admin/index.js"));
->>>>>>> c2fb9dc4e2a3443ddef1949a15855ba75faed5b5
 
 function queryToPromise(query) {
     return new Promise((resolve, reject) => {

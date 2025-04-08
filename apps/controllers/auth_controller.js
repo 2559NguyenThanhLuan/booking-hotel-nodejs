@@ -34,7 +34,9 @@ exports.login = function(req, res) {
         if (!isValidPassword) {
             return res.status(401).send("Invalid email or password");
         }
-        req.session.user = {name: user.name,
+        req.session.user = {
+            id: user.id,
+            name: user.name,
                             email: user.email,
                             phonenum: user.phonenum,
                             dob: user.dob,

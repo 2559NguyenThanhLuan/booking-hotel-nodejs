@@ -83,6 +83,7 @@
                                     tên</label>
                                 <input type="text" class="form-control"
                                     id="name" name="name"
+                                    value="<%= user.name %>"
                                     placeholder="Họ và tên" required />
                             </div>
                             <div class="mb-3">
@@ -90,13 +91,16 @@
                                     thoại</label>
                                 <input type="text" class="form-control"
                                     id="phone" name="phone"
+                                    value="<%= user.phonenum %>"
                                     placeholder="Số điện thoại" required />
                             </div>
                             <div class="mb-3">
                                 <label for="email"
                                     class="form-label">Email</label>
                                 <input type="email" class="form-control"
-                                    id="email" name="email" placeholder="Email"
+                                    id="email" name="email"
+                                    value="<%= user.email %>"
+                                    placeholder="Email"
                                     required />
                             </div>
                             <div class="md-3 mb-3 row">
@@ -122,6 +126,11 @@
                                     id="amount" name="amount"
                                     placeholder="Tổng tiền" required readonly />
                             </div>
+                            <% rooms.forEach(room => { %>
+                            <input type="hidden" class="form-control"
+                                id="roomid" name="roomid" value="<%= room.id %>"
+                                required />
+                            <% }) %>
                             <button type="submit" class="btn btn-primary">Thanh
                                 toán</button>
                         </form>

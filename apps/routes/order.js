@@ -7,6 +7,7 @@ let router = express.Router();
 let $ = require('jquery');
 const request = require('request');
 const moment = require('moment');
+const session = require('express-session');
 
 
 router.get('/', function (req, res) {
@@ -24,7 +25,7 @@ router.get('/', function (req, res) {
 
 
 router.get('/create_payment_url', function (req, res, next) {
-    const { name, phone, email, checkin, checkout, amount } = req.query;
+    const { name, phone, email, checkin, checkout, amount, roomid } = req.query;
 
     // Kiểm tra nếu thiếu dữ liệu
     if (!name || !phone || !email || !checkin || !checkout || !amount) {
@@ -40,6 +41,7 @@ router.get('/create_payment_url', function (req, res, next) {
         checkin,
         checkout,
         amount,
+        roomid
     });
 });
 
@@ -124,7 +126,7 @@ router.post('/create_payment_url', function (req, res) {
     }
 });
 
-const db = require('../database/db_config'); // Đường dẫn đến file kết nối MySQL
+const db = require('../database/db_config');
 
 router.get('/vnpay_return', async function (req, res) {
     try {
@@ -146,27 +148,30 @@ router.get('/vnpay_return', async function (req, res) {
         let hmac = crypto.createHmac("sha512", secretKey);
         let signed = hmac.update(Buffer.from(signData, 'utf-8')).digest("hex");
 
+            // if (!req.session.user || !req.session.user.id) {
+            //     return res.status(400).send('User session is invalid');
+            // };
+
+            // const userd = req.session.user.id;
+
+        // const {roomid, checkin, checkout } = req.session.paymentInfo;
+       
         if (secureHash === signed) {
             if (vnp_Params['vnp_ResponseCode'] === '00') {
-                const orderId = vnp_Params['vnp_TxnRef'];
-                const amount = parseInt(vnp_Params['vnp_Amount']) / 100; 
-                const orderInfo = vnp_Params['vnp_OrderInfo'];
-                const transactionNo = vnp_Params['vnp_TransactionNo'];
-                const bankCode = vnp_Params['vnp_BankCode'];
-                const payDate = moment(vnp_Params['vnp_PayDate'], 'YYYYMMDDHHmmss').format('YYYY-MM-DD HH:mm:ss');
-                const status = 'success';
-                const userId = 1;
-                const note = 'Thanh toán thành công';
-                const roomId = 1; 
-                const checkIn = '2025-04-10';
-                const checkOut = '2025-04-15'; 
-
-                
-                await db.execute(
-                    `INSERT INTO booking (order_id, amount, order_info, transaction_no, bank_code, pay_date, status, user_id, note, room_id, check_in, check_out) 
-                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                    [orderId, amount, orderInfo, transactionNo, bankCode, payDate, status, userId, note, roomId, checkIn, checkOut]
-                );
+                let orderId = vnp_Params['vnp_TxnRef'];
+                let amount = parseInt(vnp_Params['vnp_Amount']) / 100; 
+                let orderInfo = vnp_Params['vnp_OrderInfo'];
+                let transactionNo = vnp_Params['vnp_TransactionNo'];
+                let bankCode = vnp_Params['vnp_BankCode'];z
+                let payDate = moment(vnp_Params['vnp_PayDate'], 'YYYYMMDDHHmmss').format('YYYY-MM-DD HH:mm:ss');
+                let status = 'success';
+                let userId = 5;
+                let roomId = 24;
+                let checkIn = '14-04-2025';
+                let checkOut = '17-04-2025';
+                let note = 'aebirugaer'; 
+                await db.execute('INSERT INTO booking (user_id, room_id, checkin, checkout, amount, status, note) VALUES (?, ?, ?, ?, ?, ?, ?)', [userId, roomId, checkIn, checkOut, amount, status, note]);
+                // Cập nhật trạng thái thanh toán trong cơ sở dữ liệu   
 
                 // Hiển thị thông báo thành công
                 return res.render('vnpay/success.ejs', { code: '00' });
