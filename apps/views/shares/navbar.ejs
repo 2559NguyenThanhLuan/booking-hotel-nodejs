@@ -18,8 +18,28 @@
                 <a href="/about" class="nav-item nav-link">About</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
+<<<<<<< HEAD
             <a href="/login"
                 class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+=======
+            <% if (user) { %>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle rounded-pill py-2 px-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <%= user.name %>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                      <li><a class="dropdown-item" href="#">Booking</a></li>
+                    </ul>
+                  </div>
+                <form action="/auth/logout" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-primary rounded-pill py-2 px-4">Logout</button>
+                </form>
+            <% } else { %>
+                <a href="/auth" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+            <% } %>
+            <!-- <a href="/auth" class="btn btn-primary rounded-pill py-2 px-4">Login</a> -->
+>>>>>>> c2fb9dc4e2a3443ddef1949a15855ba75faed5b5
         </div>
     </nav>
 </div>

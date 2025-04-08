@@ -7,10 +7,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon"
   },
   "dependencies": {
     "await": "^0.2.6",
+    "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
     "config": "^1.31.0",
     "cookie-parser": "^1.4.4",
@@ -30,6 +31,10 @@
     "request": "^2.88.2",
     "serve-favicon": "^2.4.5",
     "set-tz": "^0.2.0",
-    "sha256": "^0.2.0"
+    "sha256": "^0.2.0",
+    "express-session": "^1.18.1",
+    "multer": "^1.4.5-lts.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
   }
 }
